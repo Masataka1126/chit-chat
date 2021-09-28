@@ -1,10 +1,10 @@
-package org.noname.onestep.insignificanttalk;
+package org.noname.onestep.chitchat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InsignificanttalkApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
