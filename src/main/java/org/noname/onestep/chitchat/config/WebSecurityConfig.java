@@ -1,4 +1,4 @@
-package org.noname.onestep.chitchat;
+package org.noname.onestep.chitchat.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
