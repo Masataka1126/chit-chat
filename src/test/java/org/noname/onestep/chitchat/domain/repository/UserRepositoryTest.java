@@ -16,7 +16,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,7 +38,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    @DatabaseSetup(value = "/db/testdata/setup/users/")
+    @DatabaseSetup(value = "/db/testdata/setup/domain/repository/users/")
     @ExpectedDatabase(value = "/db/testdata/expecteddata/users/",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void userRepository_saveUser_registeredToDb() throws Exception{
@@ -53,7 +52,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    @DatabaseSetup(value = "/db/testdata/setup/users/")
+    @DatabaseSetup(value = "/db/testdata/setup/domain/repository/users/")
     public void userRepository_findAllUsers_correctlyAcquired() throws Exception{
 
         List<User> userList = userRepository.findAll();
@@ -64,7 +63,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    @DatabaseSetup(value = "/db/testdata/setup/users/")
+    @DatabaseSetup(value = "/db/testdata/setup/domain/repository/users/")
     public void userRepository_findUserByEmailAddress_correctlyAcquired(){
 
         User user = userRepository.findByEmailAddressEquals("sakura@example.com");

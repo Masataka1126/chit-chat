@@ -3,8 +3,6 @@ package org.noname.onestep.chitchat.domain.service.user;
 import org.noname.onestep.chitchat.domain.entity.User;
 import org.noname.onestep.chitchat.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +21,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void save(User user) {
+
         user.setPassword(this.passwordEncoder.encode((user.getPassword())));
         repository.save(user);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String emailAddress) throws UsernameNotFoundException {
-        return null;
     }
 }

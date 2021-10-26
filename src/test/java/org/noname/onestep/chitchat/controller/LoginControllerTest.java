@@ -1,16 +1,29 @@
 package org.noname.onestep.chitchat.controller;
 
+import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import org.junit.jupiter.api.Test;
 import org.noname.onestep.chitchat.Application;
+import org.noname.onestep.chitchat.common.CsvDataSetLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@DbUnitConfiguration(dataSetLoader = CsvDataSetLoader.class)
+@TestExecutionListeners( {
+        DependencyInjectionTestExecutionListener.class,
+        TransactionalTestExecutionListener.class,
+        DbUnitTestExecutionListener.class
+})
 @AutoConfigureMockMvc
 @SpringBootTest(classes = Application.class)
 public class LoginControllerTest {
@@ -26,16 +39,35 @@ public class LoginControllerTest {
     @Test
     public void LoginPage_GetRequest_ReturnHTTPStatus200() throws Exception {
 
-        this.mockMvc.perform(get("/login")).andDo(print())
-                .andExpect(status().isOk());
+        this.mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("view/login"));
     }
 
-    // ログインページからPOSTリクエストを行った場合、モデルにデータが格納されていること
     @Test
-    public void LoginPage_PostRequest_StoredModel() throws Exception {
-
+    @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
+    public void LoginPage_PostRequest_AllowLogin() throws Exception{
+        this.mockMvc.perform(
+                formLogin("/login")
+                        .userParameter("emailAddress")
+                        .passwordParam("password")
+                        .user("testdata@example.com")
+                        .password("password")
+        ).andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/chatspace/top"));
     }
 
-
+    @Test
+    @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
+    public void LoginPage_PostRequest_RejectLogin() throws Exception{
+        this.mockMvc.perform(
+                        formLogin("/login")
+                                .userParameter("emailAddress")
+                                .passwordParam("password")
+                                .user("testdata@example.com")
+                                .password("incorrect_password")
+                ).andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/login?error"));
+    }
 
 }

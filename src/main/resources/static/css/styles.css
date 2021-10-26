@@ -1,0 +1,125 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+.form {
+  padding: 0 5em;
+}
+.form:last-of-type {
+  text-align: center;
+}
+.form__input {
+  background-color: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666666;
+  font-size: 1.6em;
+  height: 50px;
+  -webkit-transition: border-bottom-color 0.3s;
+  transition: border-bottom-color 0.3s;
+  width: 100%;
+}
+.form__input:focus {
+  border-bottom: 2px solid #666666;
+  outline: none;
+}
+.form__submit {
+  width: 70%;
+  height: 2em;
+  background-color: #1E70FF;
+  color: #fff;
+  border: none;
+  border-radius: 1em;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.form__submit:hover {
+  background-color: #4082f5;
+  -webkit-box-shadow: 0 0.4em 3.5em -0.5em #4082f5;
+          box-shadow: 0 0.4em 3.5em -0.5em #4082f5;
+}
+
+body {
+  background-color: #E9E9E9;
+}
+
+.login {
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+.login__form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  background-color: #fafafa;
+}
+.login__form__title {
+  font-size: 3em;
+  text-align: center;
+  padding: 1em 0 0.5em 0;
+  color: #1E70FF;
+}
+.login__form__group {
+  width: 100%;
+}
+.login__form__link {
+  text-align: center;
+}
+.login__form__link a {
+  font-size: 2em;
+  text-decoration: none;
+  color: #1E70FF;
+}
+.login__form__link a:visited {
+  color: #000;
+}
+.login__form__link a:hover {
+  color: #4082f5;
+}

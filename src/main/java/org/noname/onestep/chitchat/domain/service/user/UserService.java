@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public interface UserService extends UserDetailsService {
+public interface UserService {
 
     /**
      *ログインユーザを登録(更新)するメソッド
@@ -15,12 +15,4 @@ public interface UserService extends UserDetailsService {
      */
     void save(User user);
 
-    /**
-     *
-     * @param emailAddress ログインユーザが登録しているメールアドレス
-     * @return
-     * @throws UsernameNotFoundException
-     */
-    @Override
-    UserDetails loadUserByUsername(String emailAddress) throws UsernameNotFoundException;
 }

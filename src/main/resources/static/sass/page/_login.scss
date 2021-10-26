@@ -1,0 +1,48 @@
+body {
+  background-color: $color-base;
+}
+
+.login {
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+
+  &__form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+    background-color: $color-base-light;
+
+    &__title {
+      font-size: 3em;
+      text-align: center;
+      padding: 1em 0 0.5em 0;
+      color: $color-blue;
+    }
+
+    &__group {
+      width: 100%;
+    }
+
+    &__link {
+      text-align: center;
+      & a {
+        font-size: 2em;
+        text-decoration: none;
+        color: $color-blue;
+
+        &:visited {
+          color: $color-black;
+        }
+
+        &:hover {
+          color: $color-blue-right;
+        }
+      }
+    }
+  }
+}
