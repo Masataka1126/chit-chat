@@ -44,6 +44,7 @@ public class LoginControllerTest {
                 .andExpect(view().name("view/login"));
     }
 
+    // 正しいユーザ情報が入力された場合にログインできること
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
     public void LoginPage_PostRequest_AllowLogin() throws Exception{
@@ -57,6 +58,7 @@ public class LoginControllerTest {
                 .andExpect(redirectedUrl("/chatspace/top"));
     }
 
+    // 不正なユーザー情報が入力された場合にログインが出来ないこと
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
     public void LoginPage_PostRequest_RejectLogin() throws Exception{
@@ -67,7 +69,7 @@ public class LoginControllerTest {
                                 .user("testdata@example.com")
                                 .password("incorrect_password")
                 ).andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/login?error"));
+                .andExpect(redirectedUrl("/?error"));
     }
 
 }

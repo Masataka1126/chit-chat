@@ -43,6 +43,8 @@ dependencies {
 	// Spring security
 	compileOnly 'org.springframework.session:spring-session-jdbc'
 
+	implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '2.5.3'
+
 	// flyway
 	implementation 'org.flywaydb:flyway-core'
 

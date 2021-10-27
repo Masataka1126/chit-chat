@@ -8,6 +8,9 @@
     <div class="login__form">
         <h3 class="login__form__title u-margin-bottom-small">Sign in</h3>
         <form th:action="@{/login}" method="post" class="form">
+            <div th:if="${param.error}" class="u-error-massage u-center-text">
+                メールアドレスまたはパスワードが間違っています。
+            </div>
             <div class="form__group u-margin-bottom-medium">
                 <input type="email" required="required"
                 placeholder="メールアドレス" class="form__input" name="emailAddress">

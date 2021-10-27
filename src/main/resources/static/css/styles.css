@@ -20,6 +20,11 @@ body {
   text-align: center !important;
 }
 
+.u-error-massage {
+  color: #FF0000;
+  font-size: 1.5rem;
+}
+
 .u-margin-bottom-small {
   margin-bottom: 1.5rem !important;
 }
@@ -43,7 +48,7 @@ body {
 .form {
   padding: 0 5em;
 }
-.form:last-of-type {
+.form__group:last-child {
   text-align: center;
 }
 .form__input {
@@ -105,9 +110,6 @@ body {
   text-align: center;
   padding: 1em 0 0.5em 0;
   color: #1E70FF;
-}
-.login__form__group {
-  width: 100%;
 }
 .login__form__link {
   text-align: center;

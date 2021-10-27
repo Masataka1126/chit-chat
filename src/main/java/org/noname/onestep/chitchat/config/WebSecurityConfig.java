@@ -58,12 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .loginProcessingUrl("/login")
                 .usernameParameter("emailAddress")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/chatspace/top",true)
-                .failureUrl("/login?error")
+                .failureUrl("/?error")
                 .permitAll();
     }
 
