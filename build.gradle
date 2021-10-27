@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "7.15.0"
 }
 
 group = 'org.noname.onestep'
@@ -12,25 +13,58 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+
 }
 
 repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.session:spring-session-bom:2020.0.3'
+	}
+}
+
 dependencies {
+	// Spring boot
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+	// Spring security
+	compileOnly 'org.springframework.session:spring-session-jdbc'
+
+	implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '2.5.3'
+
+	// flyway
+	implementation 'org.flywaydb:flyway-core'
+
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// devtools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// mysql
+	runtimeOnly 'mysql:mysql-connector-java'
+
+	// Junit5
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'com.github.springtestdbunit:spring-test-dbunit:1.3.0'
+
+	// DBUnit
+	testImplementation 'org.dbunit:dbunit:2.7.2'
 }
 
 test {

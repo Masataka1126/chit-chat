@@ -24,7 +24,7 @@
 hs_err_pid*
 
 # application.properties
-application.properties
+application.yml
 
 ### Gradle ###
 .gradle
