@@ -54,9 +54,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/","/login","/users/create").permitAll()
+                .antMatchers("/","/users/create").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                // ログイン処理に関する設定
                 .formLogin()
                 .loginPage("/")
                 .loginProcessingUrl("/login")
@@ -64,6 +65,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .defaultSuccessUrl("/chatspace/top",true)
                 .failureUrl("/?error")
+                .permitAll()
+                .and()
+                // ログアウト処理に関する設定
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/?logout")
                 .permitAll();
     }
 

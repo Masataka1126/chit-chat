@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head th:fragment="head_fragment(title, script)">
+    <meta charset="UTF-8"
+          http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <title th:replace="${title}">chit chat</title>
+</head>
+
+<body>
+<div th:fragment="navigation" class="navigation">
+    <nav class="navigation__nav">
+        <ul class="navigation__list">
+            <li class="navigation__item">
+                <a th:href="@{/chatspace/top}" class="navigation__item__link navigation__item__title">Chit-Chat</a>
+            </li>
+            <li class="navigation__item">
+                <a th:href="@{/chatspace}" class="navigation__item__link">アカウント情報の編集</a>
+            </li>
+            <li class="navigation__item">
+                <form th:action="@{/logout}" name="logout" method="post">
+                    <a href="javascript:logout.submit()" class="navigation__item__link">ログアウト</a>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
+
