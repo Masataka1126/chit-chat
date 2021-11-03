@@ -1,0 +1,37 @@
+.navigation {
+  position: relative;
+
+  &__nav {
+    height: 6em;
+  }
+
+  &__list {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid $color-blue;
+  }
+
+  &__item {
+    &__link {
+      display: inline-block;
+      color: $color-gray-light;;
+      text-decoration: none;
+      padding: 1.4em 0.5em 0.5em;
+      font-size: 1.5em;
+      margin-right: 1em;
+    }
+
+    &__title {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.5em;
+      margin-right: 1em;
+
+      color: $color-black;
+      font-size: 2.5em;
+
+    }
+  }
+
+}

@@ -25,6 +25,11 @@ body {
   font-size: 1.5rem;
 }
 
+.u-info-massage {
+  color: #1E70FF;
+  font-size: 1.5rem;
+}
+
 .u-margin-bottom-small {
   margin-bottom: 1.5rem !important;
 }
@@ -54,7 +59,7 @@ body {
 .form__input {
   background-color: #fafafa;
   border: none;
-  border-bottom: 2px solid #e9e9e9;
+  border-bottom: 2px solid #aaabac;
   color: #666666;
   font-size: 1.6em;
   height: 50px;
@@ -83,6 +88,39 @@ body {
   background-color: #4082f5;
   -webkit-box-shadow: 0 0.4em 3.5em -0.5em #4082f5;
           box-shadow: 0 0.4em 3.5em -0.5em #4082f5;
+}
+
+.navigation {
+  position: relative;
+}
+.navigation__nav {
+  height: 6em;
+}
+.navigation__list {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-bottom: 2px solid #1E70FF;
+}
+.navigation__item__link {
+  display: inline-block;
+  color: #aaabac;
+  text-decoration: none;
+  padding: 1.4em 0.5em 0.5em;
+  font-size: 1.5em;
+  margin-right: 1em;
+}
+.navigation__item__title {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5em;
+  margin-right: 1em;
+  color: #000;
+  font-size: 2.5em;
 }
 
 body {
