@@ -39,7 +39,7 @@ public class LoginControllerTest {
 
     // ログインページにGETリクエストを送信した場合、ステータス「200」が返ってくること
     @Test
-    public void LoginPage_GetRequest_ReturnHTTPStatus200() throws Exception {
+    public void loginPage_GetRequest_ReturnHTTPStatus200() throws Exception {
 
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -49,7 +49,7 @@ public class LoginControllerTest {
     // 正しいユーザ情報が入力された場合にログインできること
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
-    public void LoginPage_PostRequest_AllowLogin() throws Exception{
+    public void loginPage_PostRequest_AllowLogin() throws Exception{
         this.mockMvc.perform(
                 formLogin("/login")
                         .userParameter("emailAddress")
@@ -63,7 +63,7 @@ public class LoginControllerTest {
     // 不正なユーザー情報が入力された場合にログインが出来ないこと
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/controller/login/")
-    public void LoginPage_PostRequest_RejectLogin() throws Exception{
+    public void loginPage_PostRequest_RejectLogin() throws Exception{
         this.mockMvc.perform(
                         formLogin("/login")
                                 .userParameter("emailAddress")
@@ -76,7 +76,7 @@ public class LoginControllerTest {
 
     // ログアウト処理を行った場合にトップページに遷移すること
     @Test
-    public void Logout_PostRequest_RedirectedLoginPage() throws Exception {
+    public void logout_PostRequest_RedirectedLoginPage() throws Exception {
         this.mockMvc.perform(post("/logout")
                 .with(SecurityMockMvcRequestPostProcessors.csrf()))
                 .andExpect(status().is3xxRedirection())
