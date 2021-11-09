@@ -39,7 +39,7 @@ public class UserRepositoryTest {
 
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/domain/repository/users/")
-    @ExpectedDatabase(value = "/db/testdata/expecteddata/users/",
+    @ExpectedDatabase(value = "/db/testdata/expecteddata/domain/repository/users/",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void userRepository_saveUser_registeredToDb() throws Exception{
 
