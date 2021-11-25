@@ -5,6 +5,9 @@ import org.noname.onestep.chitchat.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -20,9 +23,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public void save(User user) {
 
         user.setPassword(this.passwordEncoder.encode((user.getPassword())));
         repository.save(user);
+    }
+
+    @Override
+    public boolean userExits(String emailAddress) {
+
+        Optional<User> exist =
+                Optional.ofNullable(repository.findByEmailAddressEquals(emailAddress));
+
+        return exist.isPresent();
     }
 }

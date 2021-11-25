@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/partial/common :: head_fragment(~{::title})">
+    <title>アカウント登録</title>
+</head>
+<body>
+<div class="login">
+    <div class="login__form">
+        <h3 class="login__form__title u-margin-bottom-small">アカウント登録</h3>
+        <div th:text="${message}" class="u-error-massage u-center-text" id="error-message">
+            すでに登録されているメールアドレスです。
+        </div>
+        <form th:action="@{/users/create}" th:object="${user}" method="post" class="form">
+            <div class="form__group u-margin-bottom-medium">
+                <input type="email" th:field="*{emailAddress}" required="required"
+                placeholder="メールアドレス ※必須入力" class="form__input">
+            </div>
+            <div class="form__group u-margin-bottom-medium">
+                <input type="password" th:field="*{password}" required="required"
+                       placeholder="パスワード(8文字以上12文字以内) ※必須入力" class="form__input">
+            </div>
+            <div class="form__group u-margin-bottom-medium">
+                <input type="text" th:field="*{name}"
+                       placeholder="ニックネーム(15文字以内) ※未入力の場合は「名無しさん」になります。" class="form__input">
+            </div>
+            <div class="form__group u-margin-bottom-medium">
+                <input type="submit" value="registration" class="form__submit"/>
+            </div>
+        </form>
+    </div>
+</div>
+<script th:src="@{/js/user.js}" type="module"></script>
+</body>
+</html>
