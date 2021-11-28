@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User findUser(String emailAddress) {
+        return repository.findByEmailAddressEquals(emailAddress);
+    }
+
+    @Override
     public boolean userExits(String emailAddress) {
 
         Optional<User> exist =

@@ -49,7 +49,7 @@ public class UserServiceTest {
     // 対象のユーザが保存されるか
     @Test
     @DatabaseSetup(value = "/db/testdata/setup/domain/service/users/")
-    @ExpectedDatabase(value = "/db/testdata/expecteddata/domain/service/users/",
+    @ExpectedDatabase(value = "/db/testdata/expecteddata/domain/service/users/create/",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void userService_saveUser_savedUser() {
 
@@ -60,4 +60,19 @@ public class UserServiceTest {
 
         userService.save(user);
     }
+
+    @Test
+    @DatabaseSetup(value = "/db/testdata/setup/domain/service/users/")
+    @ExpectedDatabase(value = "/db/testdata/expecteddata/domain/service/users/update/",
+            assertionMode = DatabaseAssertionMode.NON_STRICT)
+    public void userService_updateUser_updatedUser() {
+
+        User user = userService.findUser("sakura@example.com");
+        user.setName("流れ弾");
+
+        userService.save(user);
+        userService.findUser(user.getEmailAddress());
+    }
+
+
 }
