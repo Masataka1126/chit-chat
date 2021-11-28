@@ -8,6 +8,9 @@
     <div class="login__form">
         <h3 class="login__form__title u-margin-bottom-small">Sign in</h3>
         <form th:action="@{/login}" method="post" class="form">
+            <div th:text="${message}" class="u-info-massage u-center-text" id="error-message">
+                ユーザー登録が完了しました。
+            </div>
             <div th:if="${param.error}" class="u-error-massage u-center-text">
                 メールアドレスまたはパスワードが間違っています。
             </div>
@@ -22,13 +25,13 @@
                 <input type="password" required="required"
                        placeholder="パスワード" class="form__input" name="password">
             </div>
-            <div class="form__group u-margin-bottom-medium">
+            <div class="form__group u-margin-bottom-small u-center-text">
                 <input type="submit" value="sign in" class="form__submit"/>
             </div>
+            <div class="login__form__link">
+                <a th:href="@{/users/create}">アカウント登録はこちら</a>
+            </div>
         </form>
-        <div class="login__form__link">
-            <a th:href="@{/users/create}">アカウント登録はこちら</a>
-        </div>
     </div>
 </div>
 </body>
